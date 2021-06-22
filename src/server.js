@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
 app.use("/cronjob-thaichana", router);
 
-const port = 3000 || process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
