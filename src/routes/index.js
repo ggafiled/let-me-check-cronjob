@@ -6,7 +6,7 @@ const https = require("https");
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
 });
-const axios = require("axios");
+var fetch = require("node-fetch");
 require("dotenv").config();
 
 router.get("/checkin", async (req, res) => {
