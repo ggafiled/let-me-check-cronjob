@@ -6,6 +6,7 @@ const https = require("https");
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
 });
+const cors = require("cors");
 var fetch = require("node-fetch");
 require("dotenv").config();
 
@@ -41,6 +42,7 @@ router.get("/checkout", async (req, res) => {
   }
 });
 
+router.options("/beacon-event", cors());
 router.get("/beacon-event", async (req, res) => {
   let usertoken = await fetch("https://api-scanner.thaichana.com/usertoken", {
     credentials: "include",
