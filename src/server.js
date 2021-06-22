@@ -8,17 +8,13 @@ const router = require("./routes");
 require("dotenv").config();
 moment.locale("th");
 
-app.use(
-  cors({
-    credentials: true,
-    origin: "https://let-me-check.herokuapp.com",
-  })
-);
+app.use(cors());
 app.use(
   express.urlencoded({
     extended: false,
   })
 );
+app.options("*", cors());
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
