@@ -52,17 +52,8 @@ router.get("/beacon-event", async (req, res) => {
     body: JSON.stringify({
       generatedId: "nayJlzoX0rerxUT9TgLAU",
     }),
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .catch((error) => {
-      return res.json({
-        status: "fail",
-        realData: [],
-        message: error.message,
-      });
-    });
+  });
+
   return res.json({
     status: "ok",
     req: req.body,
