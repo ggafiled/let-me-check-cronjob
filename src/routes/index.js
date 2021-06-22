@@ -50,7 +50,7 @@ router.get("/beacon-event", async (req, res) => {
       "User-Agent": httpsAgent,
     },
     body: JSON.stringify({
-      generatedId: generatedId,
+      generatedId: "nayJlzoX0rerxUT9TgLAU",
     }),
   })
     .then((response) => {
