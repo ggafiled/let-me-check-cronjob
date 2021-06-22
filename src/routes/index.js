@@ -54,12 +54,7 @@ router.get("/beacon-event", async (req, res) => {
     }),
   })
     .then((response) => {
-      console.log(response);
-      return res.json({
-        status: "ok",
-        req: req.body,
-        response: response.json(),
-      });
+      return response.json();
     })
     .catch((error) => {
       return res.json({
@@ -68,6 +63,11 @@ router.get("/beacon-event", async (req, res) => {
         message: error.message,
       });
     });
+  return res.json({
+    status: "ok",
+    req: req.body,
+    response: usertoken,
+  });
 });
 
 module.exports = router;
