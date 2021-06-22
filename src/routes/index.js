@@ -42,21 +42,17 @@ router.get("/checkout", async (req, res) => {
 });
 
 router.get("/beacon-event", async (req, res) => {
-  let usertoken = await axios
-    .post(
-      "https://cors-anywhere.herokuapp.com/api-scanner.thaichana.com/usertoken",
-      JSON.stringify({
-        generatedId: "nayJlzoX0rerxUT9TgLAU",
-      }),
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-          "User-Agent": httpsAgent,
-          "X-Requested-With": "XMLHttpRequest",
-        },
-      }
-    )
+  let usertoken = await fetch("https://api-scanner.thaichana.com/usertoken", {
+    credentials: "include",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "User-Agent": httpsAgent,
+    },
+    body: JSON.stringify({
+      generatedId: generatedId,
+    }),
+  })
     .then((response) => {
       console.log(response);
       return res.json({
