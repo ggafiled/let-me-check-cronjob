@@ -44,7 +44,7 @@ router.get("/checkout", async (req, res) => {
 router.get("/beacon-event", async (req, res) => {
   let usertoken = await axios
     .post(
-      "https://api-scanner.thaichana.com/usertoken",
+      "https://cors-anywhere.herokuapp.com/api-scanner.thaichana.com/usertoken",
       JSON.stringify({
         generatedId: "nayJlzoX0rerxUT9TgLAU",
       }),
