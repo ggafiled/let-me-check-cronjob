@@ -4,7 +4,7 @@
   "description": "let me check cronjob",
   "main": "server.js",
   "engines": {
-    "node": "14.x"
+    "node": "10.x"
   },
   "scripts": {
     "test": "eslint src"
