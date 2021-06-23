@@ -32,15 +32,16 @@ class Thaichana {
         for (const item of shopInfomation) {
           if (item.canAutoCheckinOut && !item.isCheckIn) {
             if (item.generatedId) {
-              auth_response = await this.getUsertoken(item.generatedId); //มีปัญหายิง request ไม่ได้
-              await this.callCheckinAPI(auth_response.token, item).then(
-                async (result) => {
-                  item.mode = "CI";
-                  // await this.pushLineMessage(item);
-                  // await this.updateShopStatusOnDB(item, true);
-                  responseCheckin.push(result);
-                }
-              );
+              responseCheckin.push(item);
+              // auth_response = await this.getUsertoken(item.generatedId); //มีปัญหายิง request ไม่ได้
+              // await this.callCheckinAPI(auth_response.token, item).then(
+              //   async (result) => {
+              //     item.mode = "CI";
+              //     await this.pushLineMessage(item);
+              //     await this.updateShopStatusOnDB(item, true);
+              //     responseCheckin.push(result);
+              //   }
+              // );
             }
           }
         }
