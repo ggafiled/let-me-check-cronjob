@@ -47,9 +47,9 @@ router.options("/beacon-event", cors());
 router.get("/beacon-event", async (req, res) => {
   var options = {
     method: "POST",
-    uri: "https://example.com/",
+    uri: "https://api-scanner.thaichana.com/register",
     body: {
-      generatedId: "nayJlzoX0rerxUT9TgLAU",
+      mobileNumber: "0902640670",
     },
     headers: {
       "User-Agent":
@@ -64,6 +64,10 @@ router.get("/beacon-event", async (req, res) => {
     })
     .catch((error) => {
       console.log(error);
+      return res.json({
+        status: "fail",
+        message: error.message,
+      });
     });
 
   return res.json({
