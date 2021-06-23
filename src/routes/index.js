@@ -46,7 +46,8 @@ router.get("/checkout", async (req, res) => {
 router.options("/beacon-event", cors());
 router.get("/beacon-event", async (req, res) => {
   var options = {
-    uri: "https://randomuser.me/api/?format=xml",
+    method: "POST",
+    uri: "https://example.com/",
     body: {
       generatedId: "nayJlzoX0rerxUT9TgLAU",
     },
