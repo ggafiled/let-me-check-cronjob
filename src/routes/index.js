@@ -47,7 +47,7 @@ router.options("/beacon-event", cors());
 router.get("/beacon-event", async (req, res) => {
   var options = {
     method: "POST",
-    uri: "https://api-scanner.thaichana.com/usertoken",
+    uri: "https://randomuser.me/api/?format=xml",
     body: {
       generatedId: "nayJlzoX0rerxUT9TgLAU",
     },
