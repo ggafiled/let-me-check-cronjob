@@ -52,7 +52,8 @@ router.get("/beacon-event", async (req, res) => {
       generatedId: "nayJlzoX0rerxUT9TgLAU",
     },
     headers: {
-      "User-Agent": "Request-Promise",
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36",
     },
     json: true, // Automatically stringifies the body to JSON
   };
