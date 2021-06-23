@@ -45,35 +45,20 @@ router.get("/checkout", async (req, res) => {
 
 router.options("/beacon-event", cors());
 router.get("/beacon-event", async (req, res) => {
+  var request = require("request");
   var options = {
     method: "POST",
-    uri: "https://api-scanner.thaichana.com/register",
-    body: {
-      mobileNumber: "0902640670",
-    },
+    url: "https://api-scanner.thaichana.com/register",
     headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36",
+      "Content-Type": "application/json",
     },
-    json: true, // Automatically stringifies the body to JSON
+    body: JSON.stringify({
+      mobileNumber: "0902640670",
+    }),
   };
-  let usertoken = await rp(options)
-    .then((result) => {
-      console.log(result);
-      return result;
-    })
-    .catch((error) => {
-      console.log(error);
-      return res.json({
-        status: "fail",
-        message: error.message,
-      });
-    });
-
-  return res.json({
-    status: "ok",
-    req: req.body,
-    response: usertoken,
+  request(options, function (error, response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
   });
 });
 
