@@ -48,12 +48,22 @@ router.get("/beacon-event", async (req, res) => {
   var options = {
     method: "POST",
     uri: "https://api-scanner.thaichana.com/usertoken",
-    body: JSON.stringify({
+    body: {
       generatedId: "nayJlzoX0rerxUT9TgLAU",
-    }),
+    },
+    headers: {
+      "User-Agent": "Request-Promise",
+    },
     json: true, // Automatically stringifies the body to JSON
   };
-  let usertoken = await rp(options);
+  let usertoken = await rp(options)
+    .then((result) => {
+      console.log(result);
+      return result;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
   return res.json({
     status: "ok",
