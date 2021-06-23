@@ -8,6 +8,7 @@ const httpsAgent = new https.Agent({
 });
 const cors = require("cors");
 var fetch = require("node-fetch");
+var rp = require("request-promise");
 require("dotenv").config();
 
 router.get("/checkin", async (req, res) => {
@@ -44,17 +45,15 @@ router.get("/checkout", async (req, res) => {
 
 router.options("/beacon-event", cors());
 router.get("/beacon-event", async (req, res) => {
-  let usertoken = await fetch("https://api-scanner.thaichana.com/usertoken", {
-    credentials: "include",
+  var options = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "User-Agent": httpsAgent,
-    },
+    uri: "https://api-scanner.thaichana.com/usertoken",
     body: JSON.stringify({
       generatedId: "nayJlzoX0rerxUT9TgLAU",
     }),
-  });
+    json: true, // Automatically stringifies the body to JSON
+  };
+  let usertoken = await rp(options);
 
   return res.json({
     status: "ok",
