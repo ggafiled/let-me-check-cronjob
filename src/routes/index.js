@@ -53,7 +53,9 @@ router.get("/beacon-event", async (req, res) => {
     },
     referrer: "https://qr.thaichana.com/",
     referrerPolicy: "strict-origin-when-cross-origin",
-    body: '{"generatedId":"MCobJG-ILytTzB9-aVJ4__"}',
+    body: JSON.stringify({
+      generatedId: "MCobJG-ILytTzB9-aVJ4__",
+    }),
     method: "POST",
     mode: "cors",
   })
