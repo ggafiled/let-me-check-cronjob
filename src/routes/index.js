@@ -47,12 +47,7 @@ router.get("/beacon-event", async (req, res) => {
   let usertoken = await fetch("https://api-scanner.thaichana.com/usertoken", {
     headers: {
       accept: "application/json, text/plain, */*",
-      "accept-language": "th-TH,th;q=0.9",
       "content-type": "application/json;charset=UTF-8",
-      "sec-ch-ua":
-        '" Not;A Brand";v="99", "Google Chrome";v="91", "Chromium";v="91"',
-      "sec-ch-ua-mobile": "?0",
-      "sec-fetch-dest": "empty",
       "sec-fetch-mode": "cors",
       "sec-fetch-site": "same-site",
     },
@@ -77,8 +72,7 @@ router.get("/beacon-event", async (req, res) => {
   console.log(usertoken);
   return res.json({
     status: "ok",
-    req: req.body,
-    response: JSON.stringify(usertoken),
+    response: String(usertoken),
   });
 });
 
