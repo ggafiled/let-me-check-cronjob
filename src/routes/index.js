@@ -45,15 +45,22 @@ router.get("/checkout", async (req, res) => {
 router.options("/beacon-event", cors());
 router.get("/beacon-event", async (req, res) => {
   let usertoken = await fetch("https://api-scanner.thaichana.com/usertoken", {
-    credentials: "include",
-    method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "User-Agent": httpsAgent,
+      accept: "application/json, text/plain, */*",
+      "accept-language": "th-TH,th;q=0.9",
+      "content-type": "application/json;charset=UTF-8",
+      "sec-ch-ua":
+        '" Not;A Brand";v="99", "Google Chrome";v="91", "Chromium";v="91"',
+      "sec-ch-ua-mobile": "?0",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-site",
     },
-    body: JSON.stringify({
-      generatedId: "nayJlzoX0rerxUT9TgLAU",
-    }),
+    referrer: "https://qr.thaichana.com/",
+    referrerPolicy: "strict-origin-when-cross-origin",
+    body: '{"generatedId":"MCobJG-ILytTzB9-aVJ4__"}',
+    method: "POST",
+    mode: "cors",
   })
     .then((result) => {
       console.log(result);
