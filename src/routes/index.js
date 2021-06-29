@@ -64,7 +64,11 @@ router.get("/beacon-event", async (req, res) => {
   })
     .then((result) => {
       console.log(result);
-      return result.json();
+      if (result.ok) {
+        return result.json();
+      } else {
+        return [];
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -78,7 +82,7 @@ router.get("/beacon-event", async (req, res) => {
   return res.json({
     status: "ok",
     req: req.body,
-    response: usertoken,
+    response: JSON.stringify(usertoken),
   });
 });
 
