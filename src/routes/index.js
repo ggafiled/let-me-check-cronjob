@@ -74,6 +74,7 @@ router.get("/beacon-event", async (req, res) => {
       });
     });
 
+  console.log(usertoken);
   return res.json({
     status: "ok",
     req: req.body,
