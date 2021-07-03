@@ -48,13 +48,14 @@ router.get("/beacon-event", async(req, res) => {
             mode: "cors",
             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1",
             credentials: "include",
-        }).json();
+        });
 
         console.log(usertoken);
 
         return res.json({
             status: "ok",
-            response: usertoken,
+            raw_response: usertoken,
+            response: usertoken.response,
         });
     } catch (error) {
         console.log(error);
