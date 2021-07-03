@@ -46,6 +46,7 @@ router.get("/beacon-event", async(req, res) => {
         let usertoken = await petitio(`https://api-scanner.thaichana.com/usertoken`, "POST").body({
             generatedId: "MCobJG-ILytTzB9-aVJ4__",
         }).header({
+            mode: "cors",
             "User-Agent": "curl/7.64.1",
             credentials: "include",
         }).text();
@@ -54,7 +55,6 @@ router.get("/beacon-event", async(req, res) => {
 
         return res.json({
             status: "ok",
-            raw_response: usertoken,
             response: usertoken,
         });
     } catch (error) {
