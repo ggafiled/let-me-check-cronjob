@@ -45,19 +45,27 @@ router.get("/checkout", async(req, res) => {
 
 router.options("/beacon-event", cors());
 router.get("/beacon-event", async(req, res) => {
+    try {
+        let usertoken = await petitio(`https://api-scanner.thaichana.com/usertoken`, "POST").body({
+            generatedId: "MCobJG-ILytTzB9-aVJ4__",
+        }).header({
+            mode: "cors"
+        }).json();
 
-    let usertoken = await petitio(`https://api-scanner.thaichana.com/usertoken`, "POST").body({
-        generatedId: "MCobJG-ILytTzB9-aVJ4__",
-    }).header({
-        mode: "cors"
-    }).json();
+        console.log(usertoken);
 
-    console.log(usertoken);
+        return res.json({
+            status: "ok",
+            response: usertoken,
+        });
+    } catch (error) {
+        console.log(error);
 
-    return res.json({
-        status: "ok",
-        response: usertoken,
-    });
+        return res.json({
+            status: "fail",
+            response: error.message,
+        });
+    }
 });
 
 module.exports = router;
