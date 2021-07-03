@@ -4,7 +4,7 @@ const Thaichana = require("../services/thaichana");
 const ThaichanaInstance = new Thaichana();
 const https = require("https");
 const httpsAgent = new https.Agent({
-    rejectUnauthorized: true,
+    rejectUnauthorized: false,
 });
 const cors = require("cors");
 var fetch = require("node-fetch");
