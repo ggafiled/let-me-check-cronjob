@@ -5,6 +5,7 @@ const ThaichanaInstance = new Thaichana();
 const cors = require("cors");
 var fetch = require("node-fetch");
 var petitio = require("petitio");
+const { raw } = require("body-parser");
 require("dotenv").config();
 
 router.get("/checkin", async(req, res) => {
@@ -47,14 +48,14 @@ router.get("/beacon-event", async(req, res) => {
         }).header({
             "User-Agent": "curl/7.64.1",
             credentials: "include",
-        }).json();
+        }).text();
 
         console.log(usertoken);
 
         return res.json({
             status: "ok",
             raw_response: usertoken,
-            response: usertoken.response,
+            response: usertoken,
         });
     } catch (error) {
         console.log(error);
