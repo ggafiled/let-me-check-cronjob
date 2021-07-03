@@ -47,6 +47,8 @@ router.get("/beacon-event", async(req, res) => {
             generatedId: "MCobJG-ILytTzB9-aVJ4__",
         }).header({
             mode: "cors",
+            Host: "api-scanner.thaichana.com",
+            Referer: "https://api-scanner.thaichana.com",
             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1",
             credentials: "include",
         }).text();
