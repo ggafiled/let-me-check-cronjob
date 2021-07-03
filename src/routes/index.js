@@ -8,6 +8,7 @@ const httpsAgent = new https.Agent({
 });
 const cors = require("cors");
 var fetch = require("node-fetch");
+var petitio = require("petitio");
 require("dotenv").config();
 
 router.get("/checkin", async(req, res) => {
@@ -45,16 +46,20 @@ router.get("/checkout", async(req, res) => {
 router.options("/beacon-event", cors());
 router.get("/beacon-event", async(req, res) => {
 
-    let usertoken = await require("petitio")(`https://api-scanner.thaichana.com/usertoken`, "POST").body({
-            generatedId: "MCobJG-ILytTzB9-aVJ4__",
-        }).then(res => res.json())
-        .catch(e => console.log(e));
+    let usertoken = await petitio(`https://api-scanner.thaichana.com/usertoken`, "POST").body({
+        generatedId: "MCobJG-ILytTzB9-aVJ4__",
+    }).json();
 
     console.log(usertoken);
 
-    return res.json({
+    if (usertoken.status == 'ok') return res.json({
         status: "ok",
         response: usertoken,
+    });
+
+    return res.json({
+        status: "ok",
+        response: [],
     });
 });
 
