@@ -47,7 +47,7 @@ router.get("/beacon-event", async(req, res) => {
         }).header({
             "User-Agent": "curl/7.64.1",
             credentials: "include",
-        });
+        }).json();
 
         console.log(usertoken);
 
