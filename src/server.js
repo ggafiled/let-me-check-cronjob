@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -10,21 +12,21 @@ moment.locale("th");
 
 app.use(cors());
 app.use(
-  express.urlencoded({
-    extended: false,
-  })
+    express.urlencoded({
+        extended: false,
+    })
 );
 app.options("*", cors());
 app.use(bodyParser.json());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin,X-Requested-With,Content-Type,Accept,content-type,application/json"
-  );
-  next();
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin,X-Requested-With,Content-Type,Accept,content-type,application/json"
+    );
+    next();
 });
 
 app.use("/cronjob-thaichana", router);
@@ -32,5 +34,5 @@ app.use("/cronjob-thaichana", router);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Example app listening at http://localhost:${port}`);
 });
